@@ -27,15 +27,14 @@ public:
         file->removeObserver(this);
     }
 
-
     void display(){
         cout<<"Stato caricamento: "<<percentuale<<"%"<<endl;
     }
+
     void update() {
         percentuale=file->getPercentage();
         display();
     }
-
 
     int getPercentuale() const {
         return percentuale;
@@ -49,10 +48,6 @@ public:
         return file;
     }
 
-   /* void setFile(Subject *file) {
-        ProgressBar::file = file;
-    }
-*/
 private:
 
     Subject* file;

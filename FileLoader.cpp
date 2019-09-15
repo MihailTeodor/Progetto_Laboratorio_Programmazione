@@ -11,31 +11,20 @@ FileLoader ::FileLoader() : numDoc(0),value(0), sizeValue(0), currentBitSize(0){
 
 void FileLoader::loadFiles() {
     while(getNumFilesToUpload()>0) {
-
         nomeFile = *filesToUpload.begin();
         ifstream file(nomeFile, ios::in | ios::binary);
-
         if (!file) {
             cerr << "Errore nell'apertura del file: " << nomeFile << endl;
         }
         else {
             cout << "File " << nomeFile << " aperto con successo" << endl;
-
             value++;
             currentBitSize+=getFileSize(nomeFile);
-
-
         }
-
-
         notifyObserver();
         filesToUpload.pop_front();
     }
-
 }
-
-//}
-
 
 
 FileLoader::~FileLoader() {
@@ -45,11 +34,11 @@ FileLoader::~FileLoader() {
 }
 
 
-
 int FileLoader::getPercentage() {
     int val= (100*value)/numDoc;
     return val;
 }
+
 
 streampos FileLoader::getFileSize(const string filename) {
     streampos fsize=0;
@@ -59,10 +48,8 @@ streampos FileLoader::getFileSize(const string filename) {
     fsize= file.tellg()-fsize;
     file.close();
     return fsize;
-
-
-
 }
+
 
 double  FileLoader::getBitPercentage() {
     double val=(100*currentBitSize)/sizeValue;

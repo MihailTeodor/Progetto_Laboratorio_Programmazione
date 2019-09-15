@@ -20,7 +20,6 @@ using namespace std;
 class FileLoader: public Subject{
 public:
     FileLoader ();
-
     virtual ~FileLoader();
     void registerObserver (Observer* o)override {
         observers.push_back(o);
@@ -46,10 +45,6 @@ public:
         return filesToUpload;
     }
 
-    /*const ifstream &getFile() const {
-        return file;
-    }*/
-
     const string &getNomeFile() const {
         return nomeFile;
     }
@@ -67,10 +62,13 @@ public:
         sizeValue+=getFileSize(fileName);
         numDoc++;
     }
+
     void loadFiles();
+
     int getNumFilesToUpload()const{
         return filesToUpload.size();
     }
+
     int getPercentage();
 
     void notifyObserver() override {
@@ -81,8 +79,8 @@ public:
     }
 
    double getBitPercentage();
-   streampos getFileSize(const string );
 
+   streampos getFileSize(const string );
 
     void setNumDoc(int numDoc) {
         FileLoader::numDoc = numDoc;
