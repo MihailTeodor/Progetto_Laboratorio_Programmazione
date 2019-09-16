@@ -1,7 +1,5 @@
 #ifndef FILELOADER_H
 #define FILELOADER_H
-
-
 #include <fstream>
 #include <list>
 #include <cstring>
@@ -14,14 +12,12 @@
 using namespace std;
 
 class FileLoader: public QObject, public Subject{
-
-
     Q_OBJECT
-
 public:
     FileLoader ();
 
     virtual ~FileLoader();
+
     void registerObserver (Observer* o)override {
         observers.push_back(o);
     }
@@ -46,10 +42,6 @@ public:
         return filesToUpload;
     }
 
-    /*const ifstream &getFile() const {
-        return file;
-    }*/
-
     const string &getNomeFile() const {
         return nomeFile;
     }
@@ -71,12 +63,11 @@ public:
 public slots:
     void loadFiles();
 
-
 public:
-
     int getNumFilesToUpload()const{
         return filesToUpload.size();
     }
+
     int getPercentage();
 
     void notifyObserver() override {
@@ -89,22 +80,21 @@ public:
    double getBitPercentage();
    streampos getFileSize(const string );
 
+   void setNumDoc(int numDoc) {
+       FileLoader::numDoc = numDoc;
+   }
 
-    void setNumDoc(int numDoc) {
-        FileLoader::numDoc = numDoc;
-    }
+   void setValue(int value) {
+       FileLoader::value = value;
+   }
 
-    void setValue(int value) {
-        FileLoader::value = value;
-    }
+   void setSizeValue(double sizeValue) {
+       FileLoader::sizeValue = sizeValue;
+   }
 
-    void setSizeValue(double sizeValue) {
-        FileLoader::sizeValue = sizeValue;
-    }
-
-    void setCurrentBitSize(double currentBitSize) {
-        FileLoader::currentBitSize = currentBitSize;
-    }
+   void setCurrentBitSize(double currentBitSize) {
+       FileLoader::currentBitSize = currentBitSize;
+   }
 
 private:
     list <Observer*> observers;
@@ -115,9 +105,6 @@ private:
     int value;
     double sizeValue;
     double currentBitSize;
-
-
-
 };
 
 #endif // FILELOADER_H

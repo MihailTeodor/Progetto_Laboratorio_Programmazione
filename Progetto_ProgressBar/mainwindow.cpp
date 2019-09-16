@@ -7,8 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-   // connect(pb1, SIGNAL (display(int)),ui->fileProgressBar, SLOT (setValue(int)))
-
 }
 
 MainWindow::~MainWindow()

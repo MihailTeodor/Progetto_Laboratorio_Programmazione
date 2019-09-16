@@ -21,8 +21,8 @@ void FileLoader::loadFiles() {
             value++;
             currentBitSize+=getFileSize(nomeFile);
         }
-        notifyObserver();
         filesToUpload.pop_front();
+        notifyObserver();
     }
 }
 
